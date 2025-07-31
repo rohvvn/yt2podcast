@@ -1,175 +1,44 @@
-# YT2Podcast
+# yt2podcast
 
-A Python CLI tool that downloads YouTube videos as MP3s and generates podcast RSS feeds. Perfect for creating your own podcast from YouTube content.
+Turn YouTube videos into podcast episodes. Just give it a URL and it downloads the audio, saves it as MP3, and creates an RSS feed.
 
-## Features
+## Quick Start
 
-- Download YouTube videos as high-quality MP3 files
-- Generate RSS feeds compatible with podcast apps
-- Automatic episode metadata extraction
-- Duplicate detection to avoid re-downloading
-- Hostable on GitHub Pages or any static site
-- Single-file application for easy deployment
-
-## Installation
-
-### Prerequisites
-
-1. **Python 3.7+** - Make sure you have Python installed
-2. **FFmpeg** - Required for audio conversion
-   - **Windows**: Download from [ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH
-   - **macOS**: `brew install ffmpeg`
-   - **Linux**: `sudo apt install ffmpeg` (Ubuntu/Debian) or `sudo yum install ffmpeg` (CentOS/RHEL)
-
-### Install Dependencies
-
+1. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+2. Install FFmpeg (required for audio conversion):
+   - Windows: Download from ffmpeg.org
+   - macOS: `brew install ffmpeg`
+   - Linux: `sudo apt install ffmpeg`
 
-### Basic Usage
-
+3. Run it:
 ```bash
 python yt2podcast.py "https://youtube.com/watch?v=someID"
 ```
 
-### Custom Base URL
+## What it does
 
-```bash
-python yt2podcast.py --base-url "https://mypodcast.com" "https://youtube.com/watch?v=someID"
-```
-
-### Help
-
-```bash
-python yt2podcast.py --help
-```
-
-## How It Works
-
-1. **Download**: Uses `yt-dlp` to download YouTube videos as MP3 files
-2. **Store**: Saves MP3s in the `episodes/` directory
-3. **Metadata**: Extracts and stores episode information (title, description, duration, etc.)
-4. **RSS Feed**: Generates/updates `rss.xml` with podcast-compatible format
-5. **Duplicate Detection**: Prevents re-downloading the same video
-
-## File Structure
-
-After running the tool, you'll have:
-
-```
-your-project/
-├── yt2podcast.py          # Main application
-├── requirements.txt        # Python dependencies
-├── rss.xml               # Generated podcast feed
-├── episodes_metadata.json # Episode metadata cache
-└── episodes/             # Downloaded MP3 files
-    ├── video1.mp3
-    ├── video2.mp3
-    └── ...
-```
+- Downloads YouTube videos as MP3 files
+- Saves them in an `episodes/` folder
+- Creates/updates an RSS feed (`rss.xml`)
+- Works with podcast apps like Apple Podcasts, Spotify, etc.
 
 ## Hosting on GitHub Pages
 
-1. **Upload Files**: Push your files to a GitHub repository
-2. **Enable Pages**: Go to Settings → Pages → Source → Deploy from a branch
-3. **Update Base URL**: Use your GitHub Pages URL:
-   ```bash
-   python yt2podcast.py --base-url "https://yourusername.github.io/yourrepo" "https://youtube.com/watch?v=someID"
-   ```
-
-## RSS Feed Structure
-
-The generated `rss.xml` includes:
-
-- **Feed Metadata**: Title, description, language, author
-- **Episode Entries**: Title, description, audio URL, publication date
-- **Podcast Extensions**: iTunes-compatible tags for duration, author, etc.
-- **Audio Enclosures**: Direct links to MP3 files
-
-## Example RSS Feed
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
-  <channel>
-    <title>My YouTube Podcast</title>
-    <description>A podcast feed generated from YouTube videos</description>
-    <link>https://mydomain.com/rss.xml</link>
-    <language>en</language>
-    <itunes:author>YT2Podcast</itunes:author>
-    <itunes:explicit>false</itunes:explicit>
-    <item>
-      <title>Video Title</title>
-      <description>Video description...</description>
-      <link>https://mydomain.com/episodes/video.mp3</link>
-      <enclosure url="https://mydomain.com/episodes/video.mp3" length="1234567" type="audio/mpeg"/>
-      <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
-      <itunes:duration>10:30</itunes:duration>
-      <itunes:author>Channel Name</itunes:author>
-    </item>
-  </channel>
-</rss>
+1. Push your files to GitHub
+2. Enable Pages in repository settings
+3. Use your GitHub Pages URL as the base URL:
+```bash
+python yt2podcast.py --base-url "https://username.github.io/repo" "YOUR_URL"
 ```
 
-## Podcast App Compatibility
+## Files created
 
-The generated RSS feed is compatible with:
+- `episodes/` - MP3 files
+- `rss.xml` - Podcast feed
+- `episodes_metadata.json` - Episode info
 
-- **Apple Podcasts**
-- **Spotify**
-- **Google Podcasts**
-- **Pocket Casts**
-- **Overcast**
-- **And many more...**
-
-## Configuration
-
-### Customizing Feed Metadata
-
-Edit the `generate_rss_feed()` method in `yt2podcast.py` to customize:
-
-- Podcast title and description
-- Author information
-- Category and language
-- Logo URL
-
-### Audio Quality
-
-Modify the `ydl_opts` in `download_video()` to change:
-
-- Audio codec (mp3, m4a, etc.)
-- Quality settings
-- Output format
-
-## Troubleshooting
-
-### Common Issues
-
-1. **FFmpeg not found**: Install FFmpeg and ensure it's in your PATH
-2. **Download fails**: Check your internet connection and video availability
-3. **Permission errors**: Ensure write permissions in the current directory
-4. **Invalid URL**: Make sure the YouTube URL is correct and accessible
-
-### Error Messages
-
-- `"Error downloading video"`: Usually network or video availability issues
-- `"Downloaded MP3 file not found"`: FFmpeg conversion failed
-- `"Video already downloaded"`: Normal behavior for duplicate URLs
-
-## Legal Considerations
-
-- **Copyright**: Only download content you have permission to use
-- **Terms of Service**: Respect YouTube's terms of service
-- **Fair Use**: Consider fair use guidelines for your jurisdiction
-- **Attribution**: Always credit original creators when possible
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
-
-## License
-
-This project is open source. Use responsibly and in accordance with applicable laws and terms of service. 
+That's it! Pretty simple.

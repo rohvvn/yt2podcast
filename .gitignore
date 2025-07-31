@@ -1,12 +1,12 @@
-# Downloaded episodes
-episodes/
-*.mp3
+# Downloaded episodes (commented out for GitHub Pages hosting)
+# episodes/
+# *.mp3
 
-# Generated RSS feed
-rss.xml
+# Generated RSS feed (commented out for GitHub Pages hosting)
+# rss.xml
 
-# Metadata cache
-episodes_metadata.json
+# Metadata cache (commented out for GitHub Pages hosting)
+# episodes_metadata.json
 
 # Python
 __pycache__/

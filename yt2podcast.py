@@ -21,7 +21,7 @@ import xml.etree.ElementTree as ET
 
 
 class YT2Podcast:
-    def __init__(self, base_url="https://mydomain.com"):
+    def __init__(self, base_url="https://rohvvn.github.io/yt2podcast"):
         self.base_url = base_url.rstrip('/')
         self.episodes_dir = Path("episodes")
         self.rss_file = Path("rss.xml")
@@ -244,8 +244,8 @@ Examples:
     
     parser.add_argument(
         '--base-url',
-        default='https://mydomain.com',
-        help='base URL for the podcast feed (default: https://mydomain.com)'
+        default='https://rohvvn.github.io/yt2podcast',
+        help='base URL for the podcast feed (default: https://rohvvn.github.io/yt2podcast)'
     )
     
     args = parser.parse_args()

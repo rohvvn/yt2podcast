@@ -19,7 +19,7 @@ pip install -r requirements.txt
 python yt2podcast.py "https://youtube.com/watch?v=someID"
 ```
 
-## What it does
+## What it m
 
 - Downloads YouTube videos as MP3 files
 - Saves them in an `episodes/` folder

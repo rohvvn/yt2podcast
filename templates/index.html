@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Personal Podcast Creator - Turn YouTube Videos Into Your Personal Podcast{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold mb-4">
+            <i class="fas fa-podcast me-3"></i>
+            Your Personal Podcast Creator
+        </h1>
+        <p class="lead mb-4">
+            Transform any YouTube videos into your own personal podcast feed. 
+            Listen to your favorite content on the go, just like a real podcast.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-4">
+                <i class="fas fa-rocket me-2"></i>Get Started Free
+            </a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-sign-in-alt me-2"></i>Sign In
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">How It Works</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-link fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">1. Add YouTube URLs</h5>
+                        <p class="card-text">
+                            Simply paste YouTube video URLs into your dashboard. 
+                            Add as many videos as you want to create your perfect playlist.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-download fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">2. Automatic Conversion</h5>
+                        <p class="card-text">
+                            Videos are automatically downloaded and converted to MP3 format. 
+                            No manual work required - just sit back and relax.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-podcast fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">3. Your Personal Feed</h5>
+                        <p class="card-text">
+                            Get your own RSS feed URL that you can subscribe to in any podcast app. 
+                            New episodes appear automatically when you add videos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Create Your Personal Podcast?</h2>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="d-flex align-items-start mb-4">
+                    <i class="fas fa-mobile-alt fa-2x text-primary me-3 mt-1"></i>
+                    <div>
+                        <h5>Listen Anywhere</h5>
+                        <p class="text-muted">
+                            Take your favorite YouTube content with you on your phone, 
+                            in your car, or while working out.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start mb-4">
+                    <i class="fas fa-clock fa-2x text-primary me-3 mt-1"></i>
+                    <div>
+                        <h5>Save Time</h5>
+                        <p class="text-muted">
+                            No more sitting in front of screens. Listen to educational content, 
+                            tutorials, or entertainment while doing other things.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-flex align-items-start mb-4">
+                    <i class="fas fa-list fa-2x text-primary me-3 mt-1"></i>
+                    <div>
+                        <h5>Curate Your Content</h5>
+                        <p class="text-muted">
+                            Build your own personalized library of audio content 
+                            from the best YouTube has to offer.
+                        </p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-start mb-4">
+                    <i class="fas fa-share-alt fa-2x text-primary me-3 mt-1"></i>
+                    <div>
+                        <h5>Share Your Feed</h5>
+                        <p class="text-muted">
+                            Share your curated podcast feed with friends and family 
+                            so they can enjoy your content selection too.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Start Your Personal Podcast?</h2>
+        <p class="lead mb-4">
+            Join thousands of users who are already enjoying their personalized audio content.
+        </p>
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg px-5">
+            <i class="fas fa-play me-2"></i>Create Your Podcast Now
+        </a>
+    </div>
+</section>
+{% endblock %} 

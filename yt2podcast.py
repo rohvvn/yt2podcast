@@ -152,14 +152,14 @@ class YT2Podcast:
         fg.description('A podcast feed generated from YouTube videos')
         fg.link(href=f"{self.base_url}/rss.xml", rel='self')
         fg.language('en')
-        fg.author(name='YT2Podcast', email='your-email@example.com')  # Change this to your real email
+        fg.author(name='YT2Podcast', email='warriorsplash1@gmail.com')
         fg.subtitle('YouTube videos as podcast episodes')
         
         # add podcast-specific metadata for directories
         fg.logo(f"{self.base_url}/logo.png")  # Optional: add a logo image
-        fg.category('Technology')
-        fg.explicit('false')
-        fg.contact('your-email@example.com')  # Contact email for podcast directories
+        fg.category({'term': 'Technology', 'scheme': 'https://itunes.apple.com/us/genre/podcasts-technology/id1310'})
+        # fg.podcast.itunes_explicit(False)  # Commented out due to validation issues
+        fg.contact('warriorsplash1@gmail.com')  # Contact email for podcast directories
         
         # add each episode to the feed
         for video_hash, episode_data in self.metadata.items():
@@ -186,7 +186,7 @@ class YT2Podcast:
             # podcast-specific metadata for directories
             fe.podcast.itunes_author(episode_data['uploader'])
             fe.podcast.itunes_duration(self._format_duration(episode_data['duration']))
-            fe.podcast.itunes_explicit('false')
+            # fe.podcast.itunes_explicit('false')  # Commented out due to validation issues
             fe.podcast.itunes_summary(episode_data['description'])
             
             # this is the actual audio file link

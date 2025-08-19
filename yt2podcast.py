@@ -73,9 +73,9 @@ class YT2Podcast:
         
         print(f"Downloading video from: {url}")
         
-        # setup yt-dlp options
+        # setup yt-dlp options with fallback formats
         ydl_opts = {
-            'format': 'bestaudio/best',
+            'format': 'bestaudio[ext=m4a]/bestaudio[ext=webm]/bestaudio/best',
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
@@ -84,6 +84,9 @@ class YT2Podcast:
             'outtmpl': str(self.episodes_dir / '%(title)s.%(ext)s'),
             'quiet': False,
             'no_warnings': False,
+            'ignoreerrors': True,
+            'no_check_certificate': True,
+            'extractor_retries': 3,
         }
         
         try:

@@ -203,16 +203,24 @@ def add_video():
 
 @app.route('/episode/<int:user_id>/<filename>')
 def serve_episode(user_id, filename):
-    """Serve audio files for authenticated users"""
-    if current_user.is_authenticated and current_user.id == user_id:
-        user_episodes_dir = UPLOAD_FOLDER / str(user_id)
-        return send_from_directory(user_episodes_dir, filename)
-    else:
-        return "Unauthorized", 403
+    """Serve audio files for podcast apps (no authentication required)"""
+    user_episodes_dir = UPLOAD_FOLDER / str(user_id)
+    audio_file = user_episodes_dir / filename
+    
+    if not audio_file.exists():
+        return "File not found", 404
+    
+    # Set proper headers for podcast apps
+    response = send_from_directory(user_episodes_dir, filename)
+    response.headers['Content-Type'] = 'audio/mpeg'
+    response.headers['Accept-Ranges'] = 'bytes'
+    response.headers['Cache-Control'] = 'public, max-age=31536000'  # Cache for 1 year
+    
+    return response
 
 @app.route('/feed/<username>')
 def user_feed(username):
-    """Generate personal RSS feed for a user"""
+    """Generate personal RSS feed for a user (public access)"""
     user = User.query.filter_by(username=username).first()
     if not user:
         return "User not found", 404

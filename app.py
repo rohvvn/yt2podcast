@@ -259,9 +259,19 @@ def user_feed(username):
                 upload_date = upload_date.replace(tzinfo=timezone.utc)
                 fe.published(upload_date)
             except ValueError:
-                fe.published(episode.download_date)
+                # Ensure download_date has timezone info
+                if episode.download_date.tzinfo is None:
+                    download_date = episode.download_date.replace(tzinfo=timezone.utc)
+                else:
+                    download_date = episode.download_date
+                fe.published(download_date)
         else:
-            fe.published(episode.download_date)
+            # Ensure download_date has timezone info
+            if episode.download_date.tzinfo is None:
+                download_date = episode.download_date.replace(tzinfo=timezone.utc)
+            else:
+                download_date = episode.download_date
+            fe.published(download_date)
         
         # Podcast metadata
         fe.podcast.itunes_author(episode.uploader or 'Unknown')
